@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# Build
+dist/
+build/
+*.egg-info/
+.vite/
+*.local
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Device settings the station does not echo back
+backend/data/
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+
+# Logs / coverage
+*.log
+npm-debug.log*
+coverage/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# PWA generated
+frontend/dev-dist/
+frontend/public/sw.js
+frontend/public/workbox-*.js

@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DEMO_MODE: "${DEMO_MODE:-true}"
+      MARSTEK_IP: "${MARSTEK_IP:-192.168.1.100}"
+      MARSTEK_PORT: "${MARSTEK_PORT:-30000}"
+      MIN_SOC_RESERVE_PCT: "${MIN_SOC_RESERVE_PCT:-10}"
+      INVERTER_EFFICIENCY: "${INVERTER_EFFICIENCY:-0.95}"
+      CORS_ORIGINS: "*"
+    restart: unless-stopped
+    # UDP to local LAN station — use host network on Linux if needed:
+    # network_mode: host
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: ""
+        VITE_WS_URL: ""
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
